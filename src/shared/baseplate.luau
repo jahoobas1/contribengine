@@ -37,10 +37,10 @@ for _, modularbrick in pairs(main.bricks:GetChildren()) do
 end
 ----Then, we need to go through each one, initialize it and reregister it.
 for nm, cb in pairs(Bricks.corebricks) do
-	Bricks.corebricks[nm] = cb.Init()
+	Bricks.corebricks[nm] = cb.Init(Bricks)
 end
 for nm, mb in pairs(Bricks.modularbricks) do
-	Bricks.modularbricks[nm] = mb.Init()
+	Bricks.modularbricks[nm] = mb.Init(Bricks)
 end
 
 -- Return the Bricks so scripts outside of the brick structure can use them.

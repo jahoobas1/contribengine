@@ -87,9 +87,9 @@ function module:Register(EventName: string, Method: "ctoc" | "ctos" | "stoc" | "
 
 	if not placetocheck:FindFirstChild(EventName) then
 		--Use HierarchyService to create our event
-		if Method == ("ctoc" or "stos") then
+		if Method == "ctoc" or Method == "stos" then
 			--Bindable event
-			local new = self.corebricks.corebricks.HierarchyService:Object("BindableEvent", {
+			local new = self.contribbricks.corebricks.HierarchyService:Object("BindableEvent", {
 				{ Property = "Name", Value = EventName },
 				{ Property = "Parent", Value = placetocheck },
 			})
@@ -97,7 +97,7 @@ function module:Register(EventName: string, Method: "ctoc" | "ctos" | "stoc" | "
 			self.events[EventName] = new
 		else
 			--Remote event
-			local new = self.corebricks.corebricks.HierarchyService:Object("RemoteEvent", {
+			local new = self.contribbricks.corebricks.HierarchyService:Object("RemoteEvent", {
 				{ Property = "Name", Value = EventName },
 				{ Property = "Parent", Value = placetocheck },
 			})
