@@ -3,4 +3,6 @@
 -- init.luau
 --]]
 
-return nil
+local baseplate = require(script.baseplate)
+
+return baseplate
