@@ -2,5 +2,3 @@
 -- Copyright Solivis Collective (C) 2025
 -- init.luau
 --]]
-
-return nil
