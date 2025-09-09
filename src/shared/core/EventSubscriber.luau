@@ -31,8 +31,8 @@ end
 EventName: The name of the event you want to subscribe to.<br>
 Method: How the event works.<br><br>
 
-ctos: <b>Client</b> to <b>Server</b><br>
-stoc: <b>Server</b> to <b>Client</b><br>
+ctoc: <b>Client</b> to <b>Client</b><br>
+stos: <b>Server</b> to <b>Server</b><br>
 <br>
 Callback: The function to run when the event is fired.
 ]]
@@ -81,8 +81,8 @@ end
 EventName: The name of the event you want to register.<br>
 Method: How you want the event to be fired.<br><br>
 
-ctos: <b>Client</b> to <b>Server</b><br>
-stoc: <b>Server</b> to <b>Client</b>
+ctoc: <b>Client</b> to <b>Client</b><br>
+stos: <b>Server</b> to <b>Server</b>
 ]]
 function module:Register(EventName: string, Method: "ctoc" | "stos")
 	local placetocheck = script.Parent.Parent.events[Method]
@@ -107,7 +107,10 @@ end
 
 --[[
 EventName: The name of the event you want to unregister.<br>
-Method: How the event is fired.
+Method: How the event is fired.<br><br>
+
+ctoc: <b>Client</b> to <b>Client</b><br>
+stos: <b>Server</b> to <b>Server</b>
 ]]
 function module:Unregister(EventName: string, Method: "ctoc" | "stos")
 	local placetocheck = script.Parent.Parent.events[Method]
