@@ -7,6 +7,9 @@ _CONTRIBENGINE.corebricks.EventSubscriber:Subscribe("Test", "stos", function()
 	print("Hello World!")
 end)
 
+local dstst = _CONTRIBENGINE.corebricks.DataService:RetrieveDataStore("DSTEST")
+print(_CONTRIBENGINE.corebricks.DataService:GetData(dstst, "ABC"))
+
 wait(2)
 
 _CONTRIBENGINE.corebricks.EventSubscriber:Fire("Test")

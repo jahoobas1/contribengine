@@ -44,12 +44,14 @@ ds: The datastore to get the value
 key: The key for the data spot
 ]]
 function module:GetData(ds: DataStore, key: string)
-	local success, errorMessage = pcall(function()
-		ds:GetAsync(key)
+	local success, result = pcall(function()
+		return ds:GetAsync(key)
 	end)
 	if not success then
-		error(errorMessage)
+		error(result)
 	else
-		return success
+		return result
 	end
 end
+
+return module
