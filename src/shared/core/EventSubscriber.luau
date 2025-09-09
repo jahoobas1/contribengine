@@ -31,14 +31,12 @@ end
 EventName: The name of the event you want to subscribe to.<br>
 Method: How the event works.<br><br>
 
-ctoc: <b>Client</b> to <b>Client</b><br>
 ctos: <b>Client</b> to <b>Server</b><br>
 stoc: <b>Server</b> to <b>Client</b><br>
-stos: <b>Server</b> to <b>Server</b><br>
 <br>
 Callback: The function to run when the event is fired.
 ]]
-function module:Subscribe(EventName: string, Method: "ctoc" | "ctos" | "stoc" | "stos", Callback: functionCallback)
+function module:Subscribe(EventName: string, Method: "ctoc" | "stos", Callback: functionCallback)
 	if script.Parent.Parent.events:FindFirstChild(Method) then
 		local placetocheck = script.Parent.Parent.events[Method]
 
@@ -83,33 +81,20 @@ end
 EventName: The name of the event you want to register.<br>
 Method: How you want the event to be fired.<br><br>
 
-ctoc: <b>Client</b> to <b>Client</b><br>
 ctos: <b>Client</b> to <b>Server</b><br>
-stoc: <b>Server</b> to <b>Client</b><br>
-stos: <b>Server</b> to <b>Server</b>
+stoc: <b>Server</b> to <b>Client</b>
 ]]
-function module:Register(EventName: string, Method: "ctoc" | "ctos" | "stoc" | "stos")
+function module:Register(EventName: string, Method: "ctoc" | "stos")
 	local placetocheck = script.Parent.Parent.events[Method]
 
 	if not placetocheck:FindFirstChild(EventName) then
 		--Use HierarchyService to create our event
-		if Method == "ctoc" or Method == "stos" then
-			--Bindable event
-			local new = self.contribbricks.corebricks.HierarchyService:Object("BindableEvent", {
-				{ Property = "Name", Value = EventName },
-				{ Property = "Parent", Value = placetocheck },
-			})
+		local new = self.contribbricks.corebricks.HierarchyService:Object("BindableEvent", {
+			{ Property = "Name", Value = EventName },
+			{ Property = "Parent", Value = placetocheck },
+		})
 
-			self.events[EventName] = new
-		else
-			--Remote event
-			local new = self.contribbricks.corebricks.HierarchyService:Object("RemoteEvent", {
-				{ Property = "Name", Value = EventName },
-				{ Property = "Parent", Value = placetocheck },
-			})
-
-			self.events[EventName] = new
-		end
+		self.events[EventName] = new
 	else
 		warn(
 			"[Contribengine/EventSubscriber]\nAn event named "
@@ -124,7 +109,7 @@ end
 EventName: The name of the event you want to unregister.<br>
 Method: How the event is fired.
 ]]
-function module:Unregister(EventName: string, Method: "ctoc" | "ctos" | "stoc" | "stos")
+function module:Unregister(EventName: string, Method: "ctoc" | "stos")
 	local placetocheck = script.Parent.Parent.events[Method]
 
 	if placetocheck:FindFirstChild(EventName) then
