@@ -6,6 +6,9 @@
 local module = {}
 module.__index = module
 
+module.SERVER_ONLY = false
+module.CLIENT_ONLY = false
+
 type functionCallback = () -> nil
 
 function module.Init(bricks)

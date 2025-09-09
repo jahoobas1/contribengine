@@ -6,6 +6,9 @@
 local module = {}
 module.__index = module
 
+module.SERVER_ONLY = true
+module.CLIENT_ONLY = false
+
 local DataStoreService = game:GetService("DataStoreService")
 
 function module.Init(bricks)

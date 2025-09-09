@@ -6,6 +6,9 @@
 local module = {}
 module.__index = module
 
+module.SERVER_ONLY = false
+module.CLIENT_ONLY = false
+
 type prop = {
 	Property: string,
 	Value: any,
