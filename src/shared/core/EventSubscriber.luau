@@ -12,7 +12,7 @@ module.DEPENDENCIES = {
 	"core/HierarchyService",
 }
 
-type functionCallback = () -> nil
+type functionCallback = (...any) -> nil
 
 function module.Init(bricks)
 	local self = {}
@@ -67,10 +67,12 @@ end
 
 --[[
 EventName: The name of the event you want to fire.
+
+...: The arguments for the event.
 ]]
-function module:Fire(EventName: string)
+function module:Fire(EventName: string, ...)
 	if self.events[EventName] ~= nil then
-		self.events[EventName]:Fire()
+		self.events[EventName]:Fire(...)
 	else
 		warn("[Contribengine/EventSubscriber]\nCurrent object does not have an event registered named " .. EventName)
 		return
