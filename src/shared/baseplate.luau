@@ -60,6 +60,22 @@ for nm, cb in pairs(Bricks.corebricks) do
 		end
 	end
 
+	--Check dependencies
+	for _, depend in pairs(cb.DEPENDENCIES) do
+		local deptable = depend:split("/")
+
+		local t = deptable[1]
+		local dependency = deptable[2]
+
+		if Bricks[t .. "bricks"] then
+			if not Bricks[t .. "bricks"][dependency] then
+				error("Missing dependency: " .. depend)
+			end
+		else
+			error("Invalid location for dependency: " .. t .. " from " .. depend)
+		end
+	end
+
 	Bricks.corebricks[nm] = cb.Init(Bricks)
 end
 for nm, mb in pairs(Bricks.modularbricks) do
@@ -77,6 +93,22 @@ for nm, mb in pairs(Bricks.modularbricks) do
 			if clientSided == true then
 				continue
 			end
+		end
+	end
+
+	--Check dependencies
+	for _, depend in pairs(mb.DEPENDENCIES) do
+		local deptable = depend:split("/")
+
+		local t = deptable[1]
+		local dependency = deptable[2]
+
+		if Bricks[t .. "bricks"] then
+			if not Bricks[t .. "bricks"][dependency] then
+				error("Missing dependency: " .. depend)
+			end
+		else
+			error("Invalid location for dependency: " .. t .. " from " .. depend)
 		end
 	end
 

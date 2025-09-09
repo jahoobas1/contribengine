@@ -8,7 +8,9 @@ module.__index = module
 
 module.SERVER_ONLY = false
 module.CLIENT_ONLY = false
-module.DEPENDENCIES = {}
+module.DEPENDENCIES = {
+	"core/HierarchyService",
+}
 
 type functionCallback = () -> nil
 
