@@ -8,6 +8,7 @@ module.__index = module
 
 module.SERVER_ONLY = true
 module.CLIENT_ONLY = false
+module.DEPENDENCIES = {}
 
 local DataStoreService = game:GetService("DataStoreService")
 

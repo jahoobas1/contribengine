@@ -8,6 +8,7 @@ module.__index = module
 
 module.SERVER_ONLY = false
 module.CLIENT_ONLY = false
+module.DEPENDENCIES = {}
 
 type prop = {
 	Property: string,
