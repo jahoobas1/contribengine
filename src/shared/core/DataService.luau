@@ -39,7 +39,7 @@ function module:SetData(ds: DataStore, key: string, value: any)
 		ds:SetAsync(key, value)
 	end)
 	if not success then
-		error(errorMessage)
+		error("[Contribengine/DataService] " .. errorMessage)
 	end
 end
 
@@ -52,7 +52,7 @@ function module:GetData(ds: DataStore, key: string)
 		return ds:GetAsync(key)
 	end)
 	if not success then
-		error(result)
+		error("[Contribengine/DataService] " .. result)
 	else
 		return result
 	end

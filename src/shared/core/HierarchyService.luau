@@ -72,7 +72,13 @@ function module:Object(className: string, props: { prop })
 		if module:ContainsProperty(newObj, property.Property) then
 			newObj[property.Property] = property.Value
 		else
-			error("Property '" .. property.Property .. "' does not exist in the '" .. className .. "' class")
+			error(
+				"[Contribengine/HierarchyService] Property '"
+					.. property.Property
+					.. "' does not exist in the '"
+					.. className
+					.. "' class"
+			)
 		end
 	end
 

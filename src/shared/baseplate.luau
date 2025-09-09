@@ -26,7 +26,7 @@ for _, corebrick in pairs(main.core:GetChildren()) do
 	if required_brick.Init then
 		Bricks.corebricks[corebrick.Name] = required_brick
 	else
-		error('Brick "' .. corebrick.Name .. '" must contain the "Init()" function.')
+		error('[Contribengine/baseplate] Brick "' .. corebrick.Name .. '" must contain the "Init()" function.')
 	end
 end
 ---- Loop through the community bricks.
@@ -38,7 +38,7 @@ for _, modularbrick in pairs(main.bricks:GetChildren()) do
 	if required_brick.Init then
 		Bricks.modularbricks[modularbrick.Name] = required_brick
 	else
-		error('Brick "' .. modularbrick.Name .. '" must contain the "Init()" function.')
+		error('[Contribengine/baseplate] Brick "' .. modularbrick.Name .. '" must contain the "Init()" function.')
 	end
 end
 ----Then, we need to go through each one, initialize it and reregister it.
@@ -46,7 +46,7 @@ for nm, cb in pairs(Bricks.corebricks) do
 	if cb.CLIENT_ONLY == cb.SERVER_ONLY then
 		--It should be false
 		if cb.CLIENT_ONLY ~= false then
-			error("Brick cannot be client only and server only at the same time")
+			error("[Contribengine/baseplate] Brick cannot be client only and server only at the same time")
 		end
 	else
 		if cb.CLIENT_ONLY == true then
@@ -72,7 +72,7 @@ for nm, cb in pairs(Bricks.corebricks) do
 				error("Missing dependency: " .. depend)
 			end
 		else
-			error("Invalid location for dependency: " .. t .. " from " .. depend)
+			error("[Contribengine/baseplate] Invalid location for dependency: " .. t .. " from " .. depend)
 		end
 	end
 
@@ -82,7 +82,7 @@ for nm, mb in pairs(Bricks.modularbricks) do
 	if mb.CLIENT_ONLY == mb.SERVER_ONLY then
 		--It should be false
 		if mb.CLIENT_ONLY ~= false then
-			error("Brick cannot be client only and server only at the same time")
+			error("[Contribengine/baseplate] Brick cannot be client only and server only at the same time")
 		end
 	else
 		if mb.CLIENT_ONLY == true then
@@ -105,10 +105,10 @@ for nm, mb in pairs(Bricks.modularbricks) do
 
 		if Bricks[t .. "bricks"] then
 			if not Bricks[t .. "bricks"][dependency] then
-				error("Missing dependency: " .. depend)
+				error("[Contribengine/baseplate] Missing dependency: " .. depend)
 			end
 		else
-			error("Invalid location for dependency: " .. t .. " from " .. depend)
+			error("[Contribengine/baseplate] Invalid location for dependency: " .. t .. " from " .. depend)
 		end
 	end
 
