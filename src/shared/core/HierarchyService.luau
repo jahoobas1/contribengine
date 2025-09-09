@@ -73,7 +73,7 @@ function module:Object(className: string, props: { prop })
 			newObj[property.Property] = property.Value
 		else
 			error(
-				"[Contribengine/HierarchyService] Property '"
+				"[Contribengine/HierarchyService]\nProperty '"
 					.. property.Property
 					.. "' does not exist in the '"
 					.. className

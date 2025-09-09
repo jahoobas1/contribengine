@@ -9,7 +9,7 @@ module.__index = module
 module.SERVER_ONLY = false
 module.CLIENT_ONLY = false
 module.DEPENDENCIES = {
-	"core/HierarchyService",
+	"core/HierarchyServices",
 }
 
 type functionCallback = () -> nil
@@ -47,7 +47,7 @@ function module:Subscribe(EventName: string, Method: "ctoc" | "ctos" | "stoc" | 
 
 			self.subscriptions[EventName] = connection
 		else
-			warn("[Contribengine/EventSubscriber] Event " .. EventName .. " does not exist in the method: " .. Method)
+			warn("[Contribengine/EventSubscriber]\nEvent " .. EventName .. " does not exist in the method: " .. Method)
 			return
 		end
 	end
@@ -62,7 +62,7 @@ function module:Unsubscribe(EventName: string)
 
 		self.subscriptions[EventName] = nil
 	else
-		warn("[Contribengine/EventSubscriber] Current object is not subscribed to event " .. EventName)
+		warn("[Contribengine/EventSubscriber]\nCurrent object is not subscribed to event " .. EventName)
 		return
 	end
 end
@@ -74,7 +74,7 @@ function module:Fire(EventName: string)
 	if self.events[EventName] ~= nil then
 		self.events[EventName]:Fire()
 	else
-		warn("[Contribengine/EventSubscriber] Current object does not have an event registered named " .. EventName)
+		warn("[Contribengine/EventSubscriber]\nCurrent object does not have an event registered named " .. EventName)
 		return
 	end
 end
@@ -112,7 +112,7 @@ function module:Register(EventName: string, Method: "ctoc" | "ctos" | "stoc" | "
 		end
 	else
 		warn(
-			"[Contribengine/EventSubscriber] An event named "
+			"[Contribengine/EventSubscriber]\nAn event named "
 				.. EventName
 				.. " already exists. Please choose another name."
 		)
@@ -132,7 +132,7 @@ function module:Unregister(EventName: string, Method: "ctoc" | "ctos" | "stoc" |
 
 		self.events[EventName] = nil
 	else
-		warn("[Contribengine/EventSubscriber] An event named " .. EventName .. " does not exist.")
+		warn("[Contribengine/EventSubscriber]\nAn event named " .. EventName .. " does not exist.")
 		return
 	end
 end
