@@ -1,0 +1,7 @@
+--[[
+-- Copyright Solivis Collective (C) 2025
+-- ProfileStorePort/init.luau
+--
+-- ProfileStore is by Loleris
+-- This is just a wrapper for it that is compatible with Contribengine
+--]]
