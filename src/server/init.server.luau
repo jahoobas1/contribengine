@@ -1,3 +1,7 @@
+--[[
+    THIS IS TESTING CODE
+]]
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local _CONTRIBENGINE = require(ReplicatedStorage.CONTRIBENGINE)
 
@@ -25,3 +29,5 @@ print("fire")
 _CONTRIBENGINE.corebricks.EventSubscriber:Fire("Test", "Epic test")
 
 _CONTRIBENGINE.corebricks.EventSubscriber:Unregister("Test", "stos")
+
+print(_CONTRIBENGINE.version())
