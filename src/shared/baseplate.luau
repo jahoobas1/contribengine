@@ -174,6 +174,20 @@ for _, b in pairs(loadorder.core) do
 end
 --Now we can do modular bricks
 for _, b in pairs(loadorder.mod) do
+	--Do checks
+	local ba = Bricks.modularbricks[b]
+	if ba.CLIENT_ONLY == true then
+		if clientSided == false then
+			continue
+		end
+	elseif ba.SERVER_ONLY == true then
+		if clientSided == true then
+			continue
+		end
+	elseif ba.CLIENT_ONLY ~= false and ba.SERVER_ONLY ~= false then
+		error("[Contribengine/baseplate]\nBrick cannot be server and client only at the same time")
+	end
+
 	Bricks.modularbricks[b] = Bricks.modularbricks[b].Init(Bricks)
 end
 
