@@ -1,5 +1,8 @@
 # Contribengine
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+### THIS PROJECT IS NO LONGER MAINTAINED, I NO LONGER DO ROBLOX WORK
+
 ## Architect your game modularly
 Contribengine is a game backend designed for modularity.
 
